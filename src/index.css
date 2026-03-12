@@ -1,0 +1,59 @@
+@font-face {
+  font-family: 'Strelka';
+  src: url('https://db.onlinewebfonts.com/t/2e5aa8907c9665c36a0c8f4c219ac7b6.woff2') format('woff2'),
+       url('https://db.onlinewebfonts.com/t/2e5aa8907c9665c36a0c8f4c219ac7b6.woff') format('woff'),
+       url('https://db.onlinewebfonts.com/t/2e5aa8907c9665c36a0c8f4c219ac7b6.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Benzin-Bold';
+  src: url('https://db.onlinewebfonts.com/t/e8326221fd905c4b9c42f6f4ed5c9ca5.woff2') format('woff2'),
+       url('https://db.onlinewebfonts.com/t/e8326221fd905c4b9c42f6f4ed5c9ca5.woff') format('woff'),
+       url('https://db.onlinewebfonts.com/t/e8326221fd905c4b9c42f6f4ed5c9ca5.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: 'Heebo', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.font-strelka {
+  font-family: 'Strelka', 'Arial Black', -apple-system, sans-serif;
+}
+
+.font-benzin {
+  font-family: 'Benzin-Bold', 'Arial Black', -apple-system, sans-serif;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll {
+  animation: scroll 20s linear infinite;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
