@@ -12,12 +12,12 @@ interface ReelSlide {
 }
 
 const reels: ReelSlide[] = [
-  { id: 1, video: '/reels1.mp4', label: 'DENT CLINIC' },
-  { id: 2, video: '/reels2.mp4', label: 'INFLUENCER' },
-  { id: 3, video: '/reels3.mp4', label: 'LUXURY RESTAURANT' },
-  { id: 4, video: '/reels4.mp4', label: 'PORSCHE' },
-  { id: 5, video: '/reels5.mp4', label: 'COMMUNITY' },
-  { id: 6, video: '/reels6.mp4', label: 'BENTLEY' },
+  { id: 1, video: '/videos/reels_1.mp4', label: 'DENT CLINIC' },
+  { id: 2, video: '/videos/reels_2.mp4', label: 'INFLUENCER' },
+  { id: 3, video: '/videos/reels_3.mp4', label: 'LUXURY RESTAURANT' },
+  { id: 4, video: '/videos/reels_4.mp4', label: 'PORSCHE' },
+  { id: 5, video: '/videos/reels_5.mp4', label: 'COMMUNITY' },
+  { id: 6, video: '/videos/reels_6.mp4', label: 'BENTLEY' },
 ];
 
 export default function ReelsCarousel() {
