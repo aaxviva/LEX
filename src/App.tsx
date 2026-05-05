@@ -141,7 +141,7 @@ function App() {
       <section className="relative h-screen flex items-end justify-start overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src="https://i.postimg.cc/zGWVmfd5/New-LOGO.png"
+            src="/GIFSHW-ezgif.com-video-to-gif-converter.gif"
             alt="Move Creators"
             className="w-full h-full object-cover"
           />
