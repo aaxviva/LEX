@@ -140,11 +140,15 @@ function App() {
       {/* Hero Section with Background Image */}
       <section className="relative h-screen flex items-end justify-start overflow-hidden">
         <div className="absolute inset-0">
-          <img
-            src="/GIFSHW-ezgif.com-video-to-gif-converter.gif"
-            alt="Move Creators"
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
             className="w-full h-full object-cover"
-          />
+          >
+            <source src="/videos/reels_1.mp4" type="video/mp4" />
+          </video>
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
         </div>
         <div className="relative z-10 p-4 sm:p-6 md:p-8 lg:p-16 pb-8 sm:pb-12 md:pb-16 lg:pb-24">
