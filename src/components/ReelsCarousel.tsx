@@ -12,12 +12,12 @@ interface ReelSlide {
 }
 
 const reels: ReelSlide[] = [
+  { id: 6, video: '/videos/reels_6.mp4', label: 'BENTLEY' },
   { id: 1, video: '/videos/reels_1.mp4', label: 'DENT CLINIC' },
   { id: 2, video: '/videos/reels_2.mp4', label: 'INFLUENCER' },
   { id: 3, video: '/videos/reels_3.mp4', label: 'LUXURY RESTAURANT' },
   { id: 4, video: '/videos/reels_4.mp4', label: 'PORSCHE' },
   { id: 5, video: '/videos/reels_5.mp4', label: 'COMMUNITY' },
-  { id: 6, video: '/videos/reels_6.mp4', label: 'BENTLEY' },
 ];
 
 export default function ReelsCarousel() {
@@ -75,7 +75,7 @@ export default function ReelsCarousel() {
                 {reels.map((reel, index) => (
                   <SwiperSlide
                     key={reel.id}
-                    className="!w-[280px] sm:!w-[320px] md:!w-[380px] lg:!w-[420px]"
+                    className="!w-[200px] sm:!w-[240px] md:!w-[280px] lg:!w-[320px]"
                   >
                     {({ isActive }) => (
                       <div
@@ -88,7 +88,7 @@ export default function ReelsCarousel() {
                           }
                         }}
                       >
-                        <div className="relative aspect-video bg-gray-900 rounded-lg overflow-hidden group">
+                        <div className="relative aspect-[9/16] bg-gray-900 rounded-lg overflow-hidden group">
                           <video
                             src={reel.video}
                             className="w-full h-full object-cover"
