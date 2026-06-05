@@ -147,7 +147,7 @@ function App() {
           className="absolute inset-0 w-full h-full object-cover"
           style={{ zIndex: 0 }}
         >
-          <source src="https://filebin.net/ywzj7z3kqg8cj4ys/SH_gif.mp4" type="video/mp4" />
+          <source src="/SH_gif.mp4" type="video/mp4" />
         </video>
         <div className="absolute inset-0 bg-black/45" style={{ zIndex: 1 }}></div>
         <div className="absolute inset-0 flex items-end" style={{ zIndex: 2 }}>
