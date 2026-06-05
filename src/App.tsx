@@ -138,14 +138,14 @@ function App() {
       </nav>
 
       {/* Hero Section with Background Video */}
-      <section className="relative w-full h-screen overflow-hidden bg-black">
+      <section className="relative w-full bg-black overflow-hidden" style={{ aspectRatio: '1920 / 720' }}>
         <video
           autoPlay
           loop
           muted
           playsInline
-          className="absolute inset-0 w-full h-full object-cover"
-          style={{ zIndex: 0 }}
+          className="w-full h-full"
+          style={{ display: 'block' }}
         >
           <source src="/SH_gif.mp4" type="video/mp4" />
         </video>
