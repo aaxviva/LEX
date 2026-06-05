@@ -137,24 +137,24 @@ function App() {
         </Menu>
       </nav>
 
-      {/* Hero Section with Background GIF */}
-      <section className="relative w-full bg-black overflow-hidden">
-        {/* Container with 16:9 aspect ratio on mobile, full height on desktop */}
-        <div className="relative w-full aspect-video md:aspect-auto md:h-screen flex items-center justify-center">
-          <div className="absolute inset-0 flex items-center justify-center">
-            <img
-              src="/videos/GIFSHW-ezgif.com-video-to-gif-converter.gif"
-              alt="Move Creators"
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
-          </div>
-          <div className="absolute inset-0 flex items-end z-10">
-            <div className="p-4 sm:p-6 md:p-8 lg:p-16 pb-8 sm:pb-12 md:pb-16 lg:pb-24 w-full">
-              <h1 className="text-sm sm:text-base md:text-xl lg:text-2xl font-heebo font-light text-white tracking-wide">
-                Creative Video Production Israel
-              </h1>
-            </div>
+      {/* Hero Section with Background Video */}
+      <section className="relative w-full h-screen overflow-hidden bg-black">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+          style={{ zIndex: 0 }}
+        >
+          <source src="https://docs.google.com/uc?export=download&id=1qrX9jsmLMMvqwIyXdEwH5MRVU32KSSX2" type="video/mp4" />
+        </video>
+        <div className="absolute inset-0 bg-black/45" style={{ zIndex: 1 }}></div>
+        <div className="absolute inset-0 flex items-end" style={{ zIndex: 2 }}>
+          <div className="p-4 sm:p-6 md:p-8 lg:p-16 pb-8 sm:pb-12 md:pb-16 lg:pb-24 w-full">
+            <h1 className="text-sm sm:text-base md:text-xl lg:text-2xl font-heebo font-light text-white tracking-wide">
+              Creative Video Production Israel
+            </h1>
           </div>
         </div>
       </section>
