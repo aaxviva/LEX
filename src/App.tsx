@@ -147,7 +147,7 @@ function App() {
           className="w-full h-full"
           style={{ display: 'block' }}
         >
-          <source src="/SH_gif.mp4" type="video/mp4" />
+          <source src="/videos/SH_gif.mp4" type="video/mp4" />
         </video>
         <div className="absolute inset-0 bg-black/45" style={{ zIndex: 1 }}></div>
         <div className="absolute inset-0 flex items-end" style={{ zIndex: 2 }}>
