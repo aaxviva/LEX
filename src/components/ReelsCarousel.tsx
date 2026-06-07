@@ -13,11 +13,11 @@ interface ReelSlide {
 
 const reels: ReelSlide[] = [
   { id: 6, video: '/videos/reels_6.mp4', label: 'BENTLEY' },
-  { id: 1, video: '/videos/reels_1.mp4', label: 'DENT CLINIC' },
+  { id: 1, video: '/videos/dent_.mp4', label: 'DENT CLINIC' },
   { id: 2, video: '/videos/reels_2.mp4', label: 'INFLUENCER' },
   { id: 3, video: '/videos/reels_3.mp4', label: 'LUXURY RESTAURANT' },
   { id: 4, video: '/videos/reels_4.mp4', label: 'PORSCHE' },
-  { id: 5, video: '/videos/reels_5.mp4', label: 'COMMUNITY' },
+  { id: 5, video: '/videos/art.mp4', label: 'COMMUNITY' },
 ];
 
 export default function ReelsCarousel() {
