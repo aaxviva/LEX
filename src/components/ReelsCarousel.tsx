@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Swiper as SwiperCore } from 'swiper';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
@@ -24,22 +24,29 @@ export default function ReelsCarousel() {
   const swiperRef = useRef<SwiperCore | null>(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const [selectedVideo, setSelectedVideo] = useState<string | null>(null);
+  const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
 
   const handleSlideChange = (swiper: SwiperCore) => {
-    setActiveIndex(swiper.centerIndex);
+    const realIndex = swiper.realIndex;
+    setActiveIndex(realIndex);
+
+    videoRefs.current.forEach((v, i) => {
+      if (!v) return;
+      if (i === realIndex) {
+        v.play().catch(() => {});
+      } else {
+        v.pause();
+        v.currentTime = 0;
+      }
+    });
   };
 
-  const handlePrev = () => {
-    swiperRef.current?.slidePrev();
-  };
+  useEffect(() => {
+    videoRefs.current[0]?.play().catch(() => {});
+  }, []);
 
-  const handleNext = () => {
-    swiperRef.current?.slideNext();
-  };
-
-  const handleSlideClick = () => {
-    setSelectedVideo(reels[activeIndex].video);
-  };
+  const handlePrev = () => swiperRef.current?.slidePrev();
+  const handleNext = () => swiperRef.current?.slideNext();
 
   return (
     <>
@@ -48,27 +55,20 @@ export default function ReelsCarousel() {
           <h2 className="text-4xl md:text-5xl font-benzin mb-12 md:mb-16">REELS</h2>
 
           <div className="space-y-8 md:space-y-12">
-            {/* Carousel Container */}
             <div className="relative">
               <Swiper
-                onSwiper={(swiper) => {
-                  swiperRef.current = swiper;
-                }}
+                onSwiper={(swiper) => { swiperRef.current = swiper; }}
                 centeredSlides={true}
                 slidesPerView="auto"
                 spaceBetween={20}
                 grabCursor={true}
+                loop={true}
+                initialSlide={0}
                 onSlideChange={handleSlideChange}
                 breakpoints={{
-                  320: {
-                    spaceBetween: 12,
-                  },
-                  768: {
-                    spaceBetween: 20,
-                  },
-                  1024: {
-                    spaceBetween: 24,
-                  },
+                  320: { spaceBetween: 12 },
+                  768: { spaceBetween: 20 },
+                  1024: { spaceBetween: 24 },
                 }}
                 className="reels-swiper"
               >
@@ -83,29 +83,25 @@ export default function ReelsCarousel() {
                           isActive ? 'opacity-100 scale-100' : 'opacity-40 scale-90'
                         }`}
                         onClick={() => {
-                          if (isActive) {
-                            handleSlideClick();
-                          }
+                          if (isActive) setSelectedVideo(reel.video);
                         }}
                       >
                         <div className="relative aspect-[9/16] bg-gray-900 rounded-lg overflow-hidden group">
                           <video
+                            ref={(el) => { videoRefs.current[index] = el; }}
                             src={reel.video}
                             className="w-full h-full object-cover"
-                            muted
+                            autoPlay={index === 0}
                             loop
+                            muted
                             playsInline
-                            autoPlay={isActive}
-                            onCanPlay={(e) => {
-                              if (isActive) {
-                                (e.target as HTMLVideoElement).play().catch(() => {});
-                              }
-                            }}
+                            preload="auto"
+                            controls={false}
                           />
                           {isActive && (
                             <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                               <div className="w-12 h-12 rounded-full bg-white/30 backdrop-blur-sm flex items-center justify-center">
-                                <div className="w-0 h-0 border-l-6 border-l-white border-t-4 border-t-transparent border-b-4 border-b-transparent ml-1" />
+                                <div className="w-0 h-0 border-l-[6px] border-l-white border-t-4 border-t-transparent border-b-4 border-b-transparent ml-1" />
                               </div>
                             </div>
                           )}
@@ -121,7 +117,6 @@ export default function ReelsCarousel() {
               </Swiper>
             </div>
 
-            {/* Navigation Controls - Desktop Only */}
             <div className="hidden md:flex justify-end items-center gap-4 pt-4">
               <button
                 onClick={handlePrev}
@@ -142,7 +137,6 @@ export default function ReelsCarousel() {
         </div>
       </section>
 
-      {/* Lightbox Modal */}
       {selectedVideo && (
         <VideoLightbox
           videoUrl={selectedVideo}
