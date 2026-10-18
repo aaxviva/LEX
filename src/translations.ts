@@ -74,9 +74,9 @@ export const translations: Translations = {
     HE: 'צור קשר',
   },
   downloadButton: {
-    EN: 'Download',
-    RU: 'Скачать',
-    HE: 'הורדה',
+    EN: 'Open Derector',
+    RU: 'Открыть Derector',
+    HE: 'לפתוח את Derector',
   },
   aboutTitle: {
     EN: 'Turn ideas into visual stories',
@@ -234,8 +234,8 @@ export const translations: Translations = {
     HE: 'קבל הצגה',
   },
   freePackDescription: {
-    EN: 'Tools that will help you or your editor. Use with pleasure — it\'s free!',
-    RU: 'Инструменты, которые помогут тебе или твоему монтажеру. Пользуйся на здоровье — это бесплатно!',
-    HE: 'כלים שיעזרו לך או לעורך שלך. תהנה בשימוש - זה בחינם!',
+    EN: 'My AI platform that turns one car photo into a cinematic ad video.',
+    RU: 'Моя AI-платформа, которая превращает одно фото машины в кинематографичный рекламный ролик.',
+    HE: 'פלטפורמת ה-AI שלי שהופכת תמונה אחת של רכב לסרטון פרסומת קולנועי.',
   },
 };

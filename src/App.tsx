@@ -315,10 +315,10 @@ function App() {
               </div>
               <div className="flex flex-col items-center gap-3">
                 <h1 className="text-2xl md:text-5xl font-benzin tracking-wider">
-                  FREE
+                  AI
                 </h1>
                 <a
-                  href="https://drive.google.com/drive/folders/11cIIOyUjludu9BBLliMGEv0L4Gs82Lzm?usp=sharing"
+                  href="https://derectorai.space"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="bg-transparent border-2 border-white text-white px-6 py-2 md:px-8 md:py-3 text-sm md:text-base rounded-full hover:bg-white hover:text-black transition-all duration-300 tracking-wider whitespace-nowrap"
