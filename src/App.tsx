@@ -147,7 +147,7 @@ function App() {
           className="w-full h-full"
           style={{ display: 'block' }}
         >
-          <source src="/videos/hero-video.mp4" type="video/mp4" />
+          <source src="https://videos.derectorai.space/SH%20gif.mp4" type="video/mp4" />
         </video>
         <div className="absolute inset-0 bg-black/45" style={{ zIndex: 1 }}></div>
         <div className="absolute inset-0 flex items-end" style={{ zIndex: 2 }}>
@@ -308,7 +308,7 @@ function App() {
             <div className="flex flex-col items-center gap-8 md:gap-10">
               <div className="w-[160px] h-[128px] md:w-[220px] md:h-[176px] relative">
                 <img
-                  src="https://i.postimg.cc/GmzXpff2/IMG-0617.png"
+                  src="https://videos.derectorai.space/folder-green.png"
                   alt="Pack Folder"
                   className="w-full h-full object-contain drop-shadow-lg"
                 />
