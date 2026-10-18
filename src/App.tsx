@@ -138,7 +138,7 @@ function App() {
       </nav>
 
       {/* Hero Section with Background Video */}
-      <section className="relative w-full bg-black overflow-hidden" style={{ aspectRatio: '1920 / 720' }}>
+      <section dir="ltr" className="relative w-full bg-black overflow-hidden" style={{ aspectRatio: '1920 / 720' }}>
         <video
           autoPlay
           loop
@@ -147,7 +147,7 @@ function App() {
           className="w-full h-full"
           style={{ display: 'block' }}
         >
-          <source src="https://videos.derectorai.space/SH%20gif.mp4" type="video/mp4" />
+          <source src="https://videos.derectorai.space/SH_gif.mp4" type="video/mp4" />
         </video>
         <div className="absolute inset-0 bg-black/45" style={{ zIndex: 1 }}></div>
         <div className="absolute inset-0 flex items-end" style={{ zIndex: 2 }}>
