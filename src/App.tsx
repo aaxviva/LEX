@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Menu as MenuIcon, MessageCircle, ArrowDownRight, ArrowDown, Play } from 'lucide-react';
+import { Menu as MenuIcon, MessageCircle, ArrowDownLeft, ArrowUp, Play } from 'lucide-react';
 import { Menu, Transition } from '@headlessui/react';
 import { translations } from './translations';
 import ReelsCarousel from './components/ReelsCarousel';
@@ -228,7 +228,7 @@ function App() {
                   <img
                     src={item.image}
                     alt={item.alt}
-                    className="w-full aspect-video object-cover"
+                    className="w-full aspect-video object-cover rounded-2xl"
                   />
                   <span className="absolute inset-0 flex items-center justify-center pointer-events-none">
                     <span className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-black/50 flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
@@ -311,12 +311,20 @@ function App() {
             </div>
 
             {/* Text Section with Arrow */}
-            <div className={`flex flex-col md:flex-row md:items-start items-center gap-4 md:gap-6 text-center md:text-start ${isRtl ? 'md:flex-row-reverse' : ''}`}>
-              <ArrowDownRight className={`hidden md:block w-8 h-8 md:w-10 md:h-10 text-white flex-shrink-0 mt-2 ${isRtl ? 'scale-x-[-1]' : ''}`} />
+            <div className={`flex flex-col md:flex-row md:items-start items-center gap-4 md:gap-6 text-center md:text-start`}>
+              <ArrowDownLeft
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className={`hidden md:block w-8 h-8 md:w-10 md:h-10 text-white flex-shrink-0 mt-2 ${isRtl ? 'scale-x-[-1]' : ''}`}
+              />
               <p className="text-base md:text-lg leading-relaxed text-white">
                 {t('freePackDescription')}
               </p>
-              <ArrowDown className="md:hidden w-6 h-6 text-white" />
+              <ArrowUp
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="md:hidden w-6 h-6 text-white"
+              />
             </div>
           </div>
         </div>

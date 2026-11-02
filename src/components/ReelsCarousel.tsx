@@ -86,7 +86,7 @@ export default function ReelsCarousel() {
                           if (isActive) setSelectedVideo(reel.video);
                         }}
                       >
-                        <div className="relative aspect-[9/16] bg-gray-900 rounded-lg overflow-hidden group">
+                        <div className="relative aspect-[9/16] bg-gray-900 rounded-2xl overflow-hidden group">
                           <video
                             ref={(el) => { videoRefs.current[index] = el; }}
                             src={reel.video}
