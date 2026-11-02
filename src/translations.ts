@@ -86,8 +86,8 @@ export const translations: Translations = {
     HE: 'צילום וידאו לסוכנויות רכב, מותגים ואירועים',
   },
   heroDetails: {
-    EN: 'Porsche · Bentley · podcasts · events',
-    RU: 'Porsche · Bentley · подкасты · мероприятия',
+    EN: 'Porsche · Bentley · Podcasts · Events',
+    RU: 'Porsche · Bentley · Подкасты · Мероприятия',
     HE: 'Porsche · Bentley · פודקאסטים · אירועים',
   },
   heroCta: {

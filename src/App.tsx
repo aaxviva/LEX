@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Menu as MenuIcon, MessageCircle, X, ArrowDownRight, ArrowDown } from 'lucide-react';
+import React, { useEffect, useRef, useState } from 'react';
+import { Menu as MenuIcon, MessageCircle, ArrowDownRight, ArrowDown } from 'lucide-react';
 import { Menu, Transition } from '@headlessui/react';
 import { translations } from './translations';
 import ReelsCarousel from './components/ReelsCarousel';
@@ -14,12 +14,32 @@ const menuItems = [
 
 function App() {
   const [currentLang, setCurrentLang] = useState<Language>('EN');
-  const [showPDF, setShowPDF] = useState(false);
+  const [navOnDark, setNavOnDark] = useState(true);
+  const heroRef = useRef<HTMLElement>(null);
 
   const languages: Language[] = ['EN', 'RU', 'HE'];
   const isRtl = currentLang === 'HE';
 
   const t = (key: keyof typeof translations) => translations[key][currentLang];
+
+  useEffect(() => {
+    const updateNavTone = () => {
+      const hero = heroRef.current;
+      if (!hero) return;
+      setNavOnDark(hero.getBoundingClientRect().bottom > 80);
+    };
+    updateNavTone();
+    window.addEventListener('scroll', updateNavTone, { passive: true });
+    window.addEventListener('resize', updateNavTone);
+    return () => {
+      window.removeEventListener('scroll', updateNavTone);
+      window.removeEventListener('resize', updateNavTone);
+    };
+  }, []);
+
+  const navTone = navOnDark
+    ? { text: 'text-white', hover: 'hover:bg-white/10', active: 'bg-white text-black' }
+    : { text: 'text-ink', hover: 'hover:bg-black/5', active: 'bg-ink text-white' };
 
   const services = [
     { title: t('serviceVideoShort'), description: t('serviceVideoDesc') },
@@ -40,18 +60,15 @@ function App() {
       </a>
 
       {/* Navigation */}
-      <nav className={`fixed top-0 ${isRtl ? 'left-0' : 'right-0'} z-20 p-3 md:p-6`}>
-        <div className="flex items-center gap-1 md:gap-2 rounded-full bg-white/90 backdrop-blur-md border border-line shadow-sm px-2 md:px-3 py-1 md:py-1.5">
-          {/* Language Switcher */}
-          <div className="flex gap-1 md:gap-2">
+      <nav className={`fixed top-0 ${isRtl ? 'left-0' : 'right-0'} z-20 p-4 md:p-6 flex items-center gap-2 md:gap-4 ${navTone.text}`}>
+        {/* Language Switcher */}
+        <div className="flex gap-1 md:gap-2 mr-1 md:mr-2">
             {languages.map((lang) => (
               <button
                 key={lang}
                 onClick={() => setCurrentLang(lang)}
-                className={`px-2.5 py-1 text-xs md:text-sm font-medium rounded-full transition-colors ${
-                  currentLang === lang
-                    ? 'bg-ink text-white'
-                    : 'text-ink hover:bg-surface'
+                className={`px-2 py-1 text-xs md:text-sm font-medium rounded transition-colors ${
+                  currentLang === lang ? navTone.active : navTone.hover
                 }`}
               >
                 {lang}
@@ -62,8 +79,8 @@ function App() {
           <Menu as="div" className="relative">
             {({ open }) => (
               <>
-                <Menu.Button className="p-2 md:p-2.5 text-ink hover:bg-surface rounded-full transition-colors">
-                  <MenuIcon className="w-5 h-5 md:w-6 md:h-6" />
+                <Menu.Button className={`p-2 md:p-3 ${navTone.hover} rounded-full transition-colors`}>
+                  <MenuIcon className="w-6 h-6 md:w-8 md:h-8" />
                 </Menu.Button>
 
                 <Transition
@@ -108,11 +125,10 @@ function App() {
               </>
             )}
           </Menu>
-        </div>
       </nav>
 
       {/* Hero Section with Background Video */}
-      <section className="relative flex items-end w-full min-h-[70vh] md:min-h-0 md:aspect-[1920/720] bg-black overflow-hidden">
+      <section ref={heroRef} className="relative flex items-end w-full min-h-[70vh] md:min-h-0 md:aspect-[1920/720] bg-black overflow-hidden">
         <video
           autoPlay
           loop
@@ -127,20 +143,20 @@ function App() {
           dir={isRtl ? 'rtl' : 'ltr'}
           className="relative z-10 w-full max-w-3xl p-6 sm:p-8 md:p-16 pb-12 md:pb-20 text-start text-white"
         >
-          <h1 className="font-benzin text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.1] tracking-tight">
+          <h1 className="font-benzin text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-[1.1] tracking-tight md:max-w-[50vw]">
             {t('heroName')}
           </h1>
-          <p className="mt-4 text-lg sm:text-xl md:text-2xl font-light text-white/90 leading-relaxed">
+          <p className="mt-3 text-lg sm:text-xl md:text-2xl font-light text-white/90 leading-relaxed">
             {t('heroSubtitle')}
           </p>
-          <p className="mt-3 text-sm md:text-base tracking-wide text-white/70">
+          <p className="mt-2 text-sm md:text-base tracking-wide text-white/70">
             {t('heroDetails')}
           </p>
           <a
             href="https://wa.me/972542489940"
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-8 inline-flex items-center justify-center bg-black text-white px-7 py-3 md:px-8 md:py-3.5 text-sm md:text-base font-medium rounded-full ring-1 ring-white/30 hover:bg-neutral-800 transition-colors duration-300"
+            className="mt-5 inline-flex items-center justify-center bg-black text-white px-7 py-3 md:px-8 md:py-3.5 text-sm md:text-base font-medium rounded-full ring-1 ring-white/30 hover:bg-neutral-800 transition-colors duration-300"
           >
             {t('heroCta')}
           </a>
@@ -169,12 +185,14 @@ function App() {
           </div>
 
           <div className="flex justify-center mt-8 sm:mt-10">
-            <button
-              onClick={() => setShowPDF(true)}
+            <a
+              href="https://drive.google.com/file/d/1qKn1SJcZhVaAIpWENmkufL_K-Jn0woD8/preview?usp=drive_link"
+              target="_blank"
+              rel="noopener noreferrer"
               className="px-8 sm:px-10 md:px-12 py-3 sm:py-4 text-sm sm:text-base md:text-lg font-medium bg-ink text-white rounded-full hover:bg-black transition-all duration-300"
             >
               {t('getPresentation')}
-            </button>
+            </a>
           </div>
         </div>
       </section>
@@ -241,14 +259,13 @@ function App() {
       </section>
 
       {/* Derector AI Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden px-4 pt-20 pb-16 bg-white">
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden px-4 pt-20 pb-16 bg-black">
         <div className="absolute inset-0">
           <img
             src="https://i.postimg.cc/P5v4Qq3g/my-saite-1-1-1.png"
             alt="Background"
             className="w-full h-full object-cover opacity-70"
           />
-          <div className="absolute inset-0 bg-white/90" />
         </div>
         <div className="relative z-10 w-full max-w-5xl">
           <div className={`grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center ${isRtl ? 'md:grid-flow-col-reverse' : ''}`}>
@@ -262,7 +279,7 @@ function App() {
                 />
               </div>
               <div className="flex flex-col items-center gap-3">
-                <h1 className="text-2xl md:text-5xl font-benzin tracking-wider text-ink">
+                <h1 className="text-2xl md:text-5xl font-benzin tracking-wider text-white">
                   Derector AI
                 </h1>
                 <a
@@ -278,11 +295,11 @@ function App() {
 
             {/* Text Section with Arrow */}
             <div className={`flex flex-col md:flex-row md:items-start items-center gap-4 md:gap-6 text-center md:text-start ${isRtl ? 'md:flex-row-reverse' : ''}`}>
-              <ArrowDownRight className={`hidden md:block w-8 h-8 md:w-10 md:h-10 text-ink flex-shrink-0 mt-2 ${isRtl ? 'scale-x-[-1]' : ''}`} />
-              <p className="text-base md:text-lg leading-relaxed text-ink">
+              <ArrowDownRight className={`hidden md:block w-8 h-8 md:w-10 md:h-10 text-white flex-shrink-0 mt-2 ${isRtl ? 'scale-x-[-1]' : ''}`} />
+              <p className="text-base md:text-lg leading-relaxed text-white">
                 {t('freePackDescription')}
               </p>
-              <ArrowDown className="md:hidden w-6 h-6 text-ink" />
+              <ArrowDown className="md:hidden w-6 h-6 text-white" />
             </div>
           </div>
         </div>
@@ -320,25 +337,6 @@ function App() {
         </div>
       </section>
 
-      {/* PDF Modal */}
-      {showPDF && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-3 md:p-4 bg-black/80" onClick={() => setShowPDF(false)}>
-          <div className="relative w-full h-[85vh] sm:h-[80vh] md:h-[85vh] max-w-2xl sm:max-w-3xl md:max-w-4xl bg-white rounded-lg shadow-2xl overflow-hidden" onClick={(e) => e.stopPropagation()}>
-            <button
-              onClick={() => setShowPDF(false)}
-              className="absolute -top-2 -right-2 sm:-top-3 sm:-right-3 z-10 bg-white rounded-full p-2 shadow-lg hover:bg-surface transition-colors"
-            >
-              <X className="w-4 h-4 sm:w-5 sm:h-5 text-ink" />
-            </button>
-            <iframe
-              src="https://drive.google.com/file/d/1qKn1SJcZhVaAIpWENmkufL_K-Jn0woD8/preview?usp=drive_link"
-              className="w-full h-full"
-              title="Move Creators Presentation"
-              allow="autoplay"
-            />
-          </div>
-        </div>
-      )}
     </div>
   );
 }
