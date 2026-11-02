@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Swiper as SwiperCore } from 'swiper';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Play } from 'lucide-react';
 import 'swiper/css';
 import VideoLightbox from './VideoLightbox';
 
@@ -50,7 +50,7 @@ export default function ReelsCarousel() {
 
   return (
     <>
-      <section dir="ltr" className="bg-surface py-16 md:py-20 lg:py-24">
+      <section dir="ltr" className="bg-surface py-6 md:py-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
           <h2 className="text-4xl md:text-5xl font-benzin text-ink mb-12 md:mb-16">REELS</h2>
 
@@ -98,13 +98,11 @@ export default function ReelsCarousel() {
                             preload="auto"
                             controls={false}
                           />
-                          {isActive && (
-                            <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                              <div className="w-12 h-12 rounded-full bg-white/30 backdrop-blur-sm flex items-center justify-center">
-                                <div className="w-0 h-0 border-l-[6px] border-l-white border-t-4 border-t-transparent border-b-4 border-b-transparent ml-1" />
-                              </div>
+                          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                            <div className="w-12 h-12 md:w-14 md:h-14 rounded-full bg-black/50 flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
+                              <Play className="w-5 h-5 text-white fill-white ml-0.5" />
                             </div>
-                          )}
+                          </div>
                         </div>
 
                         <p className="text-center mt-4 text-sm md:text-base font-medium text-muted tracking-wider">

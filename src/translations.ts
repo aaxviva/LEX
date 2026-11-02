@@ -19,6 +19,7 @@ type TranslationKey =
   | 'serviceEventsDesc'
   | 'getPresentation'
   | 'linkedin'
+  | 'watchLink'
   | 'freePackDescription';
 
 type Translations = {
@@ -109,6 +110,11 @@ export const translations: Translations = {
     EN: 'LinkedIn',
     RU: 'LinkedIn',
     HE: 'LinkedIn',
+  },
+  watchLink: {
+    EN: 'Watch →',
+    RU: 'Смотреть →',
+    HE: '← לצפייה',
   },
   serviceVideoDesc: {
     EN: 'I create high-quality video for commercials, films and series. I bring your vision to life with cinematic filming and post-production, from the first idea to the final cut.',

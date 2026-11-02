@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Menu as MenuIcon, MessageCircle, ArrowDownRight, ArrowDown } from 'lucide-react';
+import { Menu as MenuIcon, MessageCircle, ArrowDownRight, ArrowDown, Play } from 'lucide-react';
 import { Menu, Transition } from '@headlessui/react';
 import { translations } from './translations';
 import ReelsCarousel from './components/ReelsCarousel';
@@ -10,6 +10,21 @@ const menuItems = [
   { href: '#portfolio', key: 'portfolio' },
   { href: '#about', key: 'aboutMe' },
   { href: '#contact', key: 'contact' },
+] as const;
+
+const portfolioItems = [
+  {
+    href: 'https://youtube.com/playlist?list=PLRttVmO8EcgT36kuCOX8o8_JPRrcSbYUI&si=tUeJQNQLQ3hRfo6g',
+    image: 'https://i.postimg.cc/5NF9bJgt/2024-01-18-16-03-00.jpg',
+    alt: 'Portfolio 1',
+    titleKey: 'commercialProjects',
+  },
+  {
+    href: 'https://youtu.be/elBzUkUIkvA',
+    image: 'https://i.postimg.cc/3w4SSKHg/IMG-0675.jpg',
+    alt: 'Portfolio 2',
+    titleKey: 'coursesAndPodcasts',
+  },
 ] as const;
 
 function App() {
@@ -164,7 +179,7 @@ function App() {
       </section>
 
       {/* What I Do Section */}
-      <section className="min-h-screen bg-white flex items-center justify-center px-4 sm:px-6 md:px-12 py-16 sm:py-20">
+      <section className="bg-white flex items-center justify-center px-4 sm:px-6 md:px-12 py-6 md:py-10">
         <div className="max-w-7xl w-full">
           <h2 className="font-benzin text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-[1.2] text-ink mb-12 sm:mb-14 md:mb-16 text-center">
             {t('whatWeDo')}
@@ -198,47 +213,49 @@ function App() {
       </section>
 
       {/* Portfolio Section */}
-      <section id="portfolio" className="min-h-screen bg-white flex items-center justify-center px-4 sm:px-6 md:px-8 py-16 sm:py-20">
+      <section id="portfolio" className="bg-white flex items-center justify-center px-4 sm:px-6 md:px-8 py-6 md:py-10">
         <div className="max-w-4xl w-full">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-benzin text-ink mb-8 md:mb-12">{t('portfolio')}</h2>
           <div className="grid grid-cols-1 gap-6 sm:gap-8 md:grid-cols-2 md:gap-12">
-            <div className="space-y-4">
-              <a
-                href="https://youtube.com/playlist?list=PLRttVmO8EcgT36kuCOX8o8_JPRrcSbYUI&si=tUeJQNQLQ3hRfo6g"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block transform transition-transform duration-300 hover:scale-105"
-              >
-                <img
-                  src="https://i.postimg.cc/5NF9bJgt/2024-01-18-16-03-00.jpg"
-                  alt="Portfolio 1"
-                  className="w-full aspect-video object-cover"
-                />
-              </a>
-              <h3 className="text-xl md:text-2xl font-benzin text-ink">{t('commercialProjects')}</h3>
-            </div>
-            <div className="space-y-4">
-              <a
-                href="https://youtu.be/elBzUkUIkvA"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block transform transition-transform duration-300 hover:scale-105"
-              >
-                <img
-                  src="https://i.postimg.cc/3w4SSKHg/IMG-0675.jpg"
-                  alt="Portfolio 2"
-                  className="w-full aspect-video object-cover"
-                />
-              </a>
-              <h3 className="text-xl md:text-2xl font-benzin text-ink">{t('coursesAndPodcasts')}</h3>
-            </div>
+            {portfolioItems.map((item) => (
+              <div key={item.href} className="space-y-4">
+                <a
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group relative block transform transition-transform duration-300 hover:scale-105"
+                >
+                  <img
+                    src={item.image}
+                    alt={item.alt}
+                    className="w-full aspect-video object-cover"
+                  />
+                  <span className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                    <span className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-black/50 flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
+                      <Play className="w-6 h-6 text-white fill-white ml-1" />
+                    </span>
+                  </span>
+                </a>
+                <div className="space-y-2">
+                  <h3 className="text-xl md:text-2xl font-benzin text-ink">{t(item.titleKey)}</h3>
+                  <a
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-block text-sm md:text-base font-medium text-ink underline underline-offset-4 hover:text-muted transition-colors"
+                  >
+                    {t('watchLink')}
+                  </a>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
       <ReelsCarousel />
 
-      <section id="about" className="min-h-screen bg-surface flex items-center justify-center px-6 md:px-8 py-20">
+      <section id="about" className="bg-surface flex items-center justify-center px-6 md:px-8 py-6 md:py-10">
         <div className="max-w-5xl w-full">
           <h2 className="text-4xl md:text-5xl font-benzin text-ink mb-8 md:mb-12">{t('aboutMe')}</h2>
           <div className={`grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center ${isRtl ? 'md:grid-flow-col-reverse' : ''}`}>
@@ -259,7 +276,7 @@ function App() {
       </section>
 
       {/* Derector AI Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden px-4 pt-20 pb-16 bg-black">
+      <section className="relative flex items-center justify-center overflow-hidden px-4 py-6 md:py-10 bg-black">
         <div className="absolute inset-0">
           <img
             src="https://i.postimg.cc/P5v4Qq3g/my-saite-1-1-1.png"
@@ -305,7 +322,7 @@ function App() {
         </div>
       </section>
 
-      <section id="contact" className="min-h-screen bg-surface flex items-center justify-center px-4 sm:px-6 md:px-8 pt-16 sm:pt-20 pb-16">
+      <section id="contact" className="bg-surface flex items-center justify-center px-4 sm:px-6 md:px-8 py-6 md:py-10">
         <div className="max-w-4xl w-full">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-benzin text-ink mb-8 sm:mb-10 md:mb-12">{t('contact')}</h2>
           <div className="flex flex-col gap-4 sm:gap-5 md:gap-6">
