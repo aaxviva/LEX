@@ -6,22 +6,28 @@ import ReelsCarousel from './components/ReelsCarousel';
 
 type Language = 'EN' | 'RU' | 'HE';
 
+const menuItems = [
+  { href: '#portfolio', key: 'portfolio' },
+  { href: '#about', key: 'aboutMe' },
+  { href: '#contact', key: 'contact' },
+] as const;
+
 function App() {
   const [currentLang, setCurrentLang] = useState<Language>('EN');
   const [showPDF, setShowPDF] = useState(false);
 
   const languages: Language[] = ['EN', 'RU', 'HE'];
+  const isRtl = currentLang === 'HE';
 
   const t = (key: keyof typeof translations) => translations[key][currentLang];
 
-  const metallicTextStyle = {
-    WebkitBackgroundClip: 'text',
-    backgroundImage: 'linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(192,192,192,1) 50%, rgba(128,128,128,1) 100%)',
-    filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.3))',
-  };
+  const services = [
+    { title: t('serviceVideoShort'), description: t('serviceVideoDesc') },
+    { title: t('serviceEvents'), description: t('serviceEventsDesc') },
+  ];
 
   return (
-    <div className="min-h-screen bg-black text-white font-heebo" dir={currentLang === 'HE' ? 'rtl' : 'ltr'}>
+    <div className="min-h-screen bg-white text-ink font-heebo" dir={isRtl ? 'rtl' : 'ltr'}>
       {/* Floating WhatsApp Icon */}
       <a
         href="https://wa.me/+972542489940"
@@ -34,170 +40,138 @@ function App() {
       </a>
 
       {/* Navigation */}
-      <nav className={`fixed top-0 ${currentLang === 'HE' ? 'left-0' : 'right-0'} z-20 p-4 md:p-6 flex items-center gap-2 md:gap-4`}>
-        {/* Language Switcher */}
-        <div className="flex gap-1 md:gap-2 mr-1 md:mr-2">
-          {languages.map((lang) => (
-            <button
-              key={lang}
-              onClick={() => setCurrentLang(lang)}
-              className={`px-2 py-1 text-xs md:text-sm font-medium rounded transition-colors ${
-                currentLang === lang
-                  ? 'bg-white text-black'
-                  : 'text-white hover:bg-white/10'
-              }`}
-            >
-              {lang}
-            </button>
-          ))}
-        </div>
-
-        <Menu as="div" className="relative">
-          {({ open }) => (
-            <>
-              <Menu.Button className="p-2 md:p-3 hover:bg-white/10 rounded-full transition-colors">
-                <MenuIcon className="w-6 h-6 md:w-8 md:h-8" />
-              </Menu.Button>
-
-              <Transition
-                enter="transition duration-200 ease-out"
-                enterFrom="transform scale-95 opacity-0"
-                enterTo="transform scale-100 opacity-100"
-                leave="transition duration-150 ease-in"
-                leaveFrom="transform scale-100 opacity-100"
-                leaveTo="transform scale-95 opacity-0"
+      <nav className={`fixed top-0 ${isRtl ? 'left-0' : 'right-0'} z-20 p-3 md:p-6`}>
+        <div className="flex items-center gap-1 md:gap-2 rounded-full bg-white/90 backdrop-blur-md border border-line shadow-sm px-2 md:px-3 py-1 md:py-1.5">
+          {/* Language Switcher */}
+          <div className="flex gap-1 md:gap-2">
+            {languages.map((lang) => (
+              <button
+                key={lang}
+                onClick={() => setCurrentLang(lang)}
+                className={`px-2.5 py-1 text-xs md:text-sm font-medium rounded-full transition-colors ${
+                  currentLang === lang
+                    ? 'bg-ink text-white'
+                    : 'text-ink hover:bg-surface'
+                }`}
               >
-                <Menu.Items className={`absolute ${currentLang === 'HE' ? 'left-0' : 'right-0'} mt-3 w-60 md:w-72 focus:outline-none`}>
-                  <div className="p-2 space-y-1">
-                    <Menu.Item>
-                      {({ active }) => (
-                        <a
-                          href="#portfolio"
-                          className={`${
-                            active ? 'text-gray-400' : ''
-                          } flex items-center px-4 md:px-6 py-2 md:py-3 text-xl md:text-2xl font-medium transition-colors hover:text-gray-400`}
-                        >
-                          {t('portfolio')}
-                        </a>
-                      )}
-                    </Menu.Item>
-                    <Menu.Item>
-                      {({ active }) => (
-                        <a
-                          href="#about"
-                          className={`${
-                            active ? 'text-gray-400' : ''
-                          } flex items-center px-4 md:px-6 py-2 md:py-3 text-xl md:text-2xl font-medium transition-colors hover:text-gray-400`}
-                        >
-                          {t('aboutMe')}
-                        </a>
-                      )}
-                    </Menu.Item>
-                    <Menu.Item>
-                      {({ active }) => (
-                        <a
-                          href="#support"
-                          className={`${
-                            active ? 'text-gray-400' : ''
-                          } flex items-center px-4 md:px-6 py-2 md:py-3 text-xl md:text-2xl font-medium transition-colors hover:text-gray-400`}
-                        >
-                          {t('support')}
-                        </a>
-                      )}
-                    </Menu.Item>
-                    <Menu.Item>
-                      {({ active }) => (
-                        <a
-                          href="#contact"
-                          className={`${
-                            active ? 'text-gray-400' : ''
-                          } flex items-center px-4 md:px-6 py-2 md:py-3 text-xl md:text-2xl font-medium transition-colors hover:text-gray-400`}
-                        >
-                          {t('contact')}
-                        </a>
-                      )}
-                    </Menu.Item>
-                  </div>
-                </Menu.Items>
-              </Transition>
+                {lang}
+              </button>
+            ))}
+          </div>
 
-              {/* Dark Overlay */}
-              <Transition
-                show={open}
-                enter="transition-opacity duration-200"
-                enterFrom="opacity-0"
-                enterTo="opacity-100"
-                leave="transition-opacity duration-150"
-                leaveFrom="opacity-100"
-                leaveTo="opacity-0"
-                className="fixed inset-0 bg-black/70 z-[-1]"
-              />
-            </>
-          )}
-        </Menu>
+          <Menu as="div" className="relative">
+            {({ open }) => (
+              <>
+                <Menu.Button className="p-2 md:p-2.5 text-ink hover:bg-surface rounded-full transition-colors">
+                  <MenuIcon className="w-5 h-5 md:w-6 md:h-6" />
+                </Menu.Button>
+
+                <Transition
+                  enter="transition duration-200 ease-out"
+                  enterFrom="transform scale-95 opacity-0"
+                  enterTo="transform scale-100 opacity-100"
+                  leave="transition duration-150 ease-in"
+                  leaveFrom="transform scale-100 opacity-100"
+                  leaveTo="transform scale-95 opacity-0"
+                >
+                  <Menu.Items className={`absolute ${isRtl ? 'left-0' : 'right-0'} mt-3 w-60 md:w-72 focus:outline-none`}>
+                    <div className="p-2 space-y-1 rounded-2xl bg-white border border-line shadow-xl">
+                      {menuItems.map((item) => (
+                        <Menu.Item key={item.href}>
+                          {({ active }) => (
+                            <a
+                              href={item.href}
+                              className={`${
+                                active ? 'bg-surface' : ''
+                              } flex items-center px-4 md:px-5 py-2 md:py-3 rounded-xl text-xl md:text-2xl font-medium text-ink transition-colors hover:bg-surface`}
+                            >
+                              {t(item.key)}
+                            </a>
+                          )}
+                        </Menu.Item>
+                      ))}
+                    </div>
+                  </Menu.Items>
+                </Transition>
+
+                {/* Dim Overlay */}
+                <Transition
+                  show={open}
+                  enter="transition-opacity duration-200"
+                  enterFrom="opacity-0"
+                  enterTo="opacity-100"
+                  leave="transition-opacity duration-150"
+                  leaveFrom="opacity-100"
+                  leaveTo="opacity-0"
+                  className="fixed inset-0 bg-black/30 z-[-1]"
+                />
+              </>
+            )}
+          </Menu>
+        </div>
       </nav>
 
       {/* Hero Section with Background Video */}
-      <section dir="ltr" className="relative w-full bg-black overflow-hidden" style={{ aspectRatio: '1920 / 720' }}>
+      <section className="relative flex items-end w-full min-h-[70vh] md:min-h-0 md:aspect-[1920/720] bg-black overflow-hidden">
         <video
           autoPlay
           loop
           muted
           playsInline
-          className="w-full h-full"
-          style={{ display: 'block' }}
+          className="absolute inset-0 w-full h-full object-cover"
         >
           <source src="https://videos.derectorai.space/SH_gif.mp4" type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-black/45" style={{ zIndex: 1 }}></div>
-        <div className="absolute inset-0 flex items-end" style={{ zIndex: 2 }}>
-          <div className="p-4 sm:p-6 md:p-8 lg:p-16 pb-8 sm:pb-12 md:pb-16 lg:pb-24 w-full">
-            <h1 className="text-sm sm:text-base md:text-xl lg:text-2xl font-heebo font-light text-white tracking-wide">
-              Creative Video Production Israel
-            </h1>
-          </div>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/10" />
+        <div
+          dir={isRtl ? 'rtl' : 'ltr'}
+          className="relative z-10 w-full max-w-3xl p-6 sm:p-8 md:p-16 pb-12 md:pb-20 text-start text-white"
+        >
+          <h1 className="font-benzin text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.1] tracking-tight">
+            {t('heroName')}
+          </h1>
+          <p className="mt-4 text-lg sm:text-xl md:text-2xl font-light text-white/90 leading-relaxed">
+            {t('heroSubtitle')}
+          </p>
+          <p className="mt-3 text-sm md:text-base tracking-wide text-white/70">
+            {t('heroDetails')}
+          </p>
+          <a
+            href="https://wa.me/972542489940"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-8 inline-flex items-center justify-center bg-black text-white px-7 py-3 md:px-8 md:py-3.5 text-sm md:text-base font-medium rounded-full ring-1 ring-white/30 hover:bg-neutral-800 transition-colors duration-300"
+          >
+            {t('heroCta')}
+          </a>
         </div>
       </section>
 
-      {/* What We Do Section */}
-      <section className="min-h-screen bg-black flex items-center justify-center p-4 sm:p-6 md:p-12 py-16 sm:py-20">
+      {/* What I Do Section */}
+      <section className="min-h-screen bg-white flex items-center justify-center px-4 sm:px-6 md:px-12 py-16 sm:py-20">
         <div className="max-w-7xl w-full">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-benzin text-white mb-12 sm:mb-14 md:mb-16 text-center">{t('whatWeDo')}?</h2>
+          <h2 className="font-benzin text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-[1.2] text-ink mb-12 sm:mb-14 md:mb-16 text-center">
+            {t('whatWeDo')}
+          </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5 md:gap-6 lg:gap-8 mb-10 sm:mb-12">
-            <div className="bg-black border border-sm border-gray-700 p-6 sm:p-8 md:p-10 rounded-lg">
-              <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold mb-3 md:mb-4 text-gray-400">{t('serviceVideoShort')}</h3>
-              <p className="text-gray-400 text-sm sm:text-base md:text-lg leading-relaxed">
-                {t('serviceVideoDesc')}
-              </p>
-            </div>
-
-            <div className="bg-black border border-sm border-orange-500 p-6 sm:p-8 md:p-10 rounded-lg">
-              <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold mb-3 md:mb-4 text-gray-400">{t('service3D')}</h3>
-              <p className="text-gray-400 text-sm sm:text-base md:text-lg leading-relaxed">
-                {t('service3DDesc')}
-              </p>
-            </div>
-
-            <div className="bg-black border border-sm border-orange-500 p-6 sm:p-8 md:p-10 rounded-lg">
-              <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold mb-3 md:mb-4 text-gray-400">{t('serviceBranding')}</h3>
-              <p className="text-gray-400 text-sm sm:text-base md:text-lg leading-relaxed">
-                {t('serviceBrandingDesc')}
-              </p>
-            </div>
-
-            <div className="bg-black border border-sm border-gray-700 p-6 sm:p-8 md:p-10 rounded-lg">
-              <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold mb-3 md:mb-4 text-gray-400">{t('serviceEvents')}</h3>
-              <p className="text-gray-400 text-sm sm:text-base md:text-lg leading-relaxed">
-                {t('serviceEventsDesc')}
-              </p>
-            </div>
+            {services.map((service) => (
+              <div
+                key={service.title}
+                className="bg-surface border border-line p-6 sm:p-8 md:p-10 rounded-2xl transition-shadow duration-300 hover:shadow-lg"
+              >
+                <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold mb-3 md:mb-4 text-ink">{service.title}</h3>
+                <p className="text-muted text-sm sm:text-base md:text-lg leading-relaxed">
+                  {service.description}
+                </p>
+              </div>
+            ))}
           </div>
 
           <div className="flex justify-center mt-8 sm:mt-10">
             <button
               onClick={() => setShowPDF(true)}
-              className="px-8 sm:px-10 md:px-12 py-3 sm:py-4 text-sm sm:text-base md:text-lg lg:text-xl font-medium border-2 border-white text-white rounded-full hover:bg-white hover:text-black transition-all duration-300"
+              className="px-8 sm:px-10 md:px-12 py-3 sm:py-4 text-sm sm:text-base md:text-lg font-medium bg-ink text-white rounded-full hover:bg-black transition-all duration-300"
             >
               {t('getPresentation')}
             </button>
@@ -206,39 +180,39 @@ function App() {
       </section>
 
       {/* Portfolio Section */}
-      <section id="portfolio" className="min-h-screen bg-black flex items-center justify-center p-4 sm:p-6 md:p-8 py-16 sm:py-20">
-        <div className="max-w-4xl">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-benzin mb-8 md:mb-12">{t('portfolio')}</h2>
+      <section id="portfolio" className="min-h-screen bg-white flex items-center justify-center px-4 sm:px-6 md:px-8 py-16 sm:py-20">
+        <div className="max-w-4xl w-full">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-benzin text-ink mb-8 md:mb-12">{t('portfolio')}</h2>
           <div className="grid grid-cols-1 gap-6 sm:gap-8 md:grid-cols-2 md:gap-12">
             <div className="space-y-4">
-              <a 
+              <a
                 href="https://youtube.com/playlist?list=PLRttVmO8EcgT36kuCOX8o8_JPRrcSbYUI&si=tUeJQNQLQ3hRfo6g"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block transform transition-transform duration-300 hover:scale-105"
               >
-                <img 
+                <img
                   src="https://i.postimg.cc/5NF9bJgt/2024-01-18-16-03-00.jpg"
                   alt="Portfolio 1"
                   className="w-full aspect-video object-cover"
                 />
               </a>
-              <h3 className="text-xl md:text-2xl font-benzin">{t('commercialProjects')}</h3>
+              <h3 className="text-xl md:text-2xl font-benzin text-ink">{t('commercialProjects')}</h3>
             </div>
             <div className="space-y-4">
-              <a 
+              <a
                 href="https://youtu.be/elBzUkUIkvA"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block transform transition-transform duration-300 hover:scale-105"
               >
-                <img 
+                <img
                   src="https://i.postimg.cc/3w4SSKHg/IMG-0675.jpg"
                   alt="Portfolio 2"
                   className="w-full aspect-video object-cover"
                 />
               </a>
-              <h3 className="text-xl md:text-2xl font-benzin">{t('coursesAndPodcasts')}</h3>
+              <h3 className="text-xl md:text-2xl font-benzin text-ink">{t('coursesAndPodcasts')}</h3>
             </div>
           </div>
         </div>
@@ -246,64 +220,38 @@ function App() {
 
       <ReelsCarousel />
 
-      <section id="about" className="min-h-screen bg-zinc-900 flex items-center justify-center p-6 md:p-8 pt-20">
+      <section id="about" className="min-h-screen bg-surface flex items-center justify-center px-6 md:px-8 py-20">
         <div className="max-w-5xl w-full">
-          <h2 className="text-4xl md:text-5xl font-benzin mb-8 md:mb-12">{t('aboutMe')}</h2>
-          <div className={`grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center ${currentLang === 'HE' ? 'md:grid-flow-col-reverse' : ''}`}>
-            <div className="space-y-4 md:space-y-6 text-base md:text-lg font-heebo">
-              <p className="text-xl md:text-2xl font-medium mb-6 md:mb-8">{t('aboutTitle')}</p>
+          <h2 className="text-4xl md:text-5xl font-benzin text-ink mb-8 md:mb-12">{t('aboutMe')}</h2>
+          <div className={`grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center ${isRtl ? 'md:grid-flow-col-reverse' : ''}`}>
+            <div className="space-y-4 md:space-y-6 text-base md:text-lg font-heebo text-muted">
+              <p className="text-xl md:text-2xl font-medium text-ink mb-6 md:mb-8">{t('aboutTitle')}</p>
               <p>{t('aboutDescription1')}</p>
               <p>{t('aboutDescription2')}</p>
             </div>
-            <div className={`flex ${currentLang === 'HE' ? 'justify-start' : 'justify-end'}`}>
+            <div className={`flex ${isRtl ? 'justify-start' : 'justify-end'}`}>
               <img
                 src="https://i.postimg.cc/kGhFfT4b/IMG-8326.jpg"
                 alt="Photo"
-                className="w-full max-w-sm rounded-lg shadow-lg object-cover"
+                className="w-full max-w-sm rounded-2xl shadow-lg object-cover"
               />
             </div>
           </div>
         </div>
       </section>
 
-      <section id="support" className="min-h-screen bg-black flex items-center justify-center p-6 md:p-8 pt-20">
-        <div className="max-w-4xl w-full">
-          <h2 className="text-4xl md:text-5xl font-benzin mb-8 md:mb-12">{t('support')}</h2>
-          <div className="space-y-6 md:space-y-8">
-            <div className="bg-black/30 p-4 md:p-6 rounded-lg">
-              <h3 className="text-xl md:text-2xl font-benzin mb-4">{t('faqTitle')}</h3>
-              <div className="space-y-4">
-                <div>
-                  <h4 className="text-lg md:text-xl mb-2">{t('faqQuestion1')}</h4>
-                  <p className="text-gray-400 text-sm md:text-base">{t('faqAnswer1')}</p>
-                </div>
-                <div>
-                  <h4 className="text-lg md:text-xl mb-2">{t('faqQuestion2')}</h4>
-                  <p className="text-gray-400 text-sm md:text-base">{t('faqAnswer2')}</p>
-                </div>
-              </div>
-            </div>
-            <div className="bg-black/30 p-4 md:p-6 rounded-lg">
-              <h3 className="text-xl md:text-2xl font-benzin mb-4">{t('technicalSupportTitle')}</h3>
-              <p className="text-gray-400 text-sm md:text-base">
-                {t('technicalSupportText')}
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Hero Section with Free Pack */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 pb-10">
+      {/* Derector AI Section */}
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden px-4 pt-20 pb-16 bg-white">
         <div className="absolute inset-0">
           <img
             src="https://i.postimg.cc/P5v4Qq3g/my-saite-1-1-1.png"
             alt="Background"
             className="w-full h-full object-cover opacity-70"
           />
+          <div className="absolute inset-0 bg-white/90" />
         </div>
-        <div className="relative z-10 w-full max-w-5xl px-4">
-          <div className={`grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center ${currentLang === 'HE' ? 'md:grid-flow-col-reverse' : ''}`}>
+        <div className="relative z-10 w-full max-w-5xl">
+          <div className={`grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center ${isRtl ? 'md:grid-flow-col-reverse' : ''}`}>
             {/* Folder & Download Section */}
             <div className="flex flex-col items-center gap-8 md:gap-10">
               <div className="w-[160px] h-[128px] md:w-[220px] md:h-[176px] relative">
@@ -314,14 +262,14 @@ function App() {
                 />
               </div>
               <div className="flex flex-col items-center gap-3">
-                <h1 className="text-2xl md:text-5xl font-benzin tracking-wider">
-                  AI
+                <h1 className="text-2xl md:text-5xl font-benzin tracking-wider text-ink">
+                  Derector AI
                 </h1>
                 <a
                   href="https://derectorai.space"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-transparent border-2 border-white text-white px-6 py-2 md:px-8 md:py-3 text-sm md:text-base rounded-full hover:bg-white hover:text-black transition-all duration-300 tracking-wider whitespace-nowrap"
+                  className="bg-ink text-white px-6 py-2 md:px-8 md:py-3 text-sm md:text-base rounded-full hover:bg-black transition-all duration-300 tracking-wider whitespace-nowrap"
                 >
                   {t('downloadButton')}
                 </a>
@@ -329,36 +277,26 @@ function App() {
             </div>
 
             {/* Text Section with Arrow */}
-            <div className="flex flex-col items-center md:items-start">
-              {/* Desktop: Arrow + Text */}
-              <div className={`hidden md:flex items-start gap-4 md:gap-6 ${currentLang === 'HE' ? 'flex-row-reverse' : ''}`}>
-                <ArrowDownRight className={`w-8 h-8 md:w-10 md:h-10 text-white flex-shrink-0 mt-2 transition-transform ${currentLang === 'HE' ? 'scale-x-[-1]' : ''}`} />
-                <p className="text-base md:text-lg leading-relaxed text-white">
-                  {t('freePackDescription')}
-                </p>
-              </div>
-
-              {/* Mobile: Text */}
-              <div className="flex md:hidden flex-col items-center gap-3 text-center">
-                <p className="text-base leading-relaxed text-white">
-                  {t('freePackDescription')}
-                </p>
-                <ArrowDown className="w-6 h-6 text-white" />
-              </div>
+            <div className={`flex flex-col md:flex-row md:items-start items-center gap-4 md:gap-6 text-center md:text-start ${isRtl ? 'md:flex-row-reverse' : ''}`}>
+              <ArrowDownRight className={`hidden md:block w-8 h-8 md:w-10 md:h-10 text-ink flex-shrink-0 mt-2 ${isRtl ? 'scale-x-[-1]' : ''}`} />
+              <p className="text-base md:text-lg leading-relaxed text-ink">
+                {t('freePackDescription')}
+              </p>
+              <ArrowDown className="md:hidden w-6 h-6 text-ink" />
             </div>
           </div>
         </div>
       </section>
 
-      <section id="contact" className="min-h-screen bg-zinc-900 flex items-center justify-center p-4 sm:p-6 md:p-8 pt-16 sm:pt-20">
+      <section id="contact" className="min-h-screen bg-surface flex items-center justify-center px-4 sm:px-6 md:px-8 pt-16 sm:pt-20 pb-16">
         <div className="max-w-4xl w-full">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-benzin mb-8 sm:mb-10 md:mb-12">{t('contact')}</h2>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-benzin text-ink mb-8 sm:mb-10 md:mb-12">{t('contact')}</h2>
           <div className="flex flex-col gap-4 sm:gap-5 md:gap-6">
             <a
               href="https://wa.me/+972542489940"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-400 text-sm sm:text-base md:text-lg hover:text-white transition-colors"
+              className="text-ink text-sm sm:text-base md:text-lg underline-offset-4 hover:underline transition-colors w-fit"
             >
               WhatsApp
             </a>
@@ -366,7 +304,7 @@ function App() {
               href="https://www.instagram.com/lexviven?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-400 text-sm sm:text-base md:text-lg hover:text-white transition-colors"
+              className="text-ink text-sm sm:text-base md:text-lg underline-offset-4 hover:underline transition-colors w-fit"
             >
               Instagram
             </a>
@@ -374,7 +312,7 @@ function App() {
               href="https://www.linkedin.com/in/alexey-viventsov-58749a23b"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-400 text-sm sm:text-base md:text-lg hover:text-white transition-colors"
+              className="text-ink text-sm sm:text-base md:text-lg underline-offset-4 hover:underline transition-colors w-fit"
             >
               {t('linkedin')}
             </a>
@@ -388,9 +326,9 @@ function App() {
           <div className="relative w-full h-[85vh] sm:h-[80vh] md:h-[85vh] max-w-2xl sm:max-w-3xl md:max-w-4xl bg-white rounded-lg shadow-2xl overflow-hidden" onClick={(e) => e.stopPropagation()}>
             <button
               onClick={() => setShowPDF(false)}
-              className="absolute -top-2 -right-2 sm:-top-3 sm:-right-3 z-10 bg-white rounded-full p-2 shadow-lg hover:bg-gray-100 transition-colors"
+              className="absolute -top-2 -right-2 sm:-top-3 sm:-right-3 z-10 bg-white rounded-full p-2 shadow-lg hover:bg-surface transition-colors"
             >
-              <X className="w-4 h-4 sm:w-5 sm:h-5 text-black" />
+              <X className="w-4 h-4 sm:w-5 sm:h-5 text-ink" />
             </button>
             <iframe
               src="https://drive.google.com/file/d/1qKn1SJcZhVaAIpWENmkufL_K-Jn0woD8/preview?usp=drive_link"

@@ -10,6 +10,10 @@ export default {
       },
       colors: {
         silver: '#C0C0C0',
+        ink: '#111111',
+        muted: '#555555',
+        surface: '#F5F5F5',
+        line: '#E5E5E5',
       },
     },
   },

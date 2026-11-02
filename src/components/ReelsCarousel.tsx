@@ -50,9 +50,9 @@ export default function ReelsCarousel() {
 
   return (
     <>
-      <section dir="ltr" className="bg-black py-16 md:py-20 lg:py-24">
+      <section dir="ltr" className="bg-surface py-16 md:py-20 lg:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
-          <h2 className="text-4xl md:text-5xl font-benzin mb-12 md:mb-16">REELS</h2>
+          <h2 className="text-4xl md:text-5xl font-benzin text-ink mb-12 md:mb-16">REELS</h2>
 
           <div className="space-y-8 md:space-y-12">
             <div className="relative">
@@ -107,7 +107,7 @@ export default function ReelsCarousel() {
                           )}
                         </div>
 
-                        <p className="text-center mt-4 text-sm md:text-base font-medium text-gray-300 tracking-wider">
+                        <p className="text-center mt-4 text-sm md:text-base font-medium text-muted tracking-wider">
                           {reel.label}
                         </p>
                       </div>
@@ -120,14 +120,14 @@ export default function ReelsCarousel() {
             <div className="hidden md:flex justify-end items-center gap-4 pt-4">
               <button
                 onClick={handlePrev}
-                className="w-12 h-12 rounded-full bg-white text-black flex items-center justify-center hover:bg-gray-200 transition-colors duration-300"
+                className="w-12 h-12 rounded-full bg-ink text-white flex items-center justify-center hover:bg-black transition-colors duration-300"
                 aria-label="Previous reel"
               >
                 <ChevronLeft className="w-6 h-6" />
               </button>
               <button
                 onClick={handleNext}
-                className="w-12 h-12 rounded-full bg-white text-black flex items-center justify-center hover:bg-gray-200 transition-colors duration-300"
+                className="w-12 h-12 rounded-full bg-ink text-white flex items-center justify-center hover:bg-black transition-colors duration-300"
                 aria-label="Next reel"
               >
                 <ChevronRight className="w-6 h-6" />

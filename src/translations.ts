@@ -1,41 +1,23 @@
 type TranslationKey =
   | 'aboutMe'
   | 'portfolio'
-  | 'products'
-  | 'support'
   | 'contact'
   | 'downloadButton'
   | 'aboutTitle'
   | 'aboutDescription1'
   | 'aboutDescription2'
-  | 'aboutDescription3'
   | 'commercialProjects'
   | 'coursesAndPodcasts'
-  | 'materialsCount'
-  | 'forVideoEditing'
-  | 'basic'
-  | 'baseTextLine1'
-  | 'baseTextLine2'
-  | 'faqTitle'
-  | 'faqQuestion1'
-  | 'faqAnswer1'
-  | 'faqQuestion2'
-  | 'faqAnswer2'
-  | 'technicalSupportTitle'
-  | 'technicalSupportText'
-  | 'watchTutorial'
-  | 'heroTagline'
+  | 'heroName'
+  | 'heroSubtitle'
+  | 'heroDetails'
+  | 'heroCta'
   | 'whatWeDo'
-  | 'serviceVideo'
+  | 'serviceVideoShort'
   | 'serviceVideoDesc'
-  | 'service3D'
-  | 'service3DDesc'
-  | 'serviceBranding'
-  | 'serviceBrandingDesc'
   | 'serviceEvents'
   | 'serviceEventsDesc'
   | 'getPresentation'
-  | 'serviceVideoShort'
   | 'linkedin'
   | 'freePackDescription';
 
@@ -58,25 +40,15 @@ export const translations: Translations = {
     RU: 'ПОРТФОЛИО',
     HE: 'תיק עבודות',
   },
-  products: {
-    EN: 'PRODUCTS',
-    RU: 'ПРОДУКТЫ',
-    HE: 'מוצרים',
-  },
-  support: {
-    EN: 'SUPPORT',
-    RU: 'ПОДДЕРЖКА',
-    HE: 'תמיכה',
-  },
   contact: {
     EN: 'CONTACT',
     RU: 'КОНТАКТЫ',
     HE: 'צור קשר',
   },
   downloadButton: {
-    EN: 'Open Derector',
-    RU: 'Открыть Derector',
-    HE: 'לפתוח את Derector',
+    EN: 'Open Derector AI',
+    RU: 'Открыть Derector AI',
+    HE: 'לפתוח את Derector AI',
   },
   aboutTitle: {
     EN: 'Turn ideas into visual stories',
@@ -103,70 +75,30 @@ export const translations: Translations = {
     RU: 'КУРСЫ И ПОДКАСТЫ',
     HE: 'קורסים ופודקאסטים',
   },
-  materialsCount: {
-    EN: '10 GB MATERIALS',
-    RU: '10 GB МАТЕРИАЛОВ',
-    HE: '10 GB חומרים',
+  heroName: {
+    EN: 'Alexey Viventsov',
+    RU: 'Алексей Вивенцов',
+    HE: 'אלכסיי ויוונצוב',
   },
-  forVideoEditing: {
-    EN: 'FOR VIDEO EDITING',
-    RU: 'ДЛЯ ВИДЕОМОНТАЖА',
-    HE: 'לעריכת וידאו',
+  heroSubtitle: {
+    EN: 'Video for car dealerships, brands and events in Israel',
+    RU: 'Видео для автосалонов, брендов и мероприятий в Израиле',
+    HE: 'צילום וידאו לסוכנויות רכב, מותגים ואירועים',
   },
-  basic: {
-    EN: 'BASIC',
-    RU: 'БАЗОВЫЙ',
-    HE: 'בסיסי',
+  heroDetails: {
+    EN: 'Porsche · Bentley · podcasts · events',
+    RU: 'Porsche · Bentley · подкасты · мероприятия',
+    HE: 'Porsche · Bentley · פודקאסטים · אירועים',
   },
-  baseTextLine1: {
-    EN: 'No useless frills,',
-    RU: 'Никаких бесполезных украшений,',
-    HE: 'ללא קישוטים מיותרים,',
+  heroCta: {
+    EN: 'Write on WhatsApp',
+    RU: 'Написать в WhatsApp',
+    HE: 'לכתוב בוואטסאפ',
   },
-  baseTextLine2: {
-    EN: 'just a strong base.',
-    RU: 'только сильная основа.',
-    HE: 'רק בסיס חזק.',
-  },
-  faqTitle: {
-    EN: 'FAQ',
-    RU: 'ЧАСТО ЗАДАВАЕМЫЕ ВОПРОСЫ',
-    HE: 'שאלות נפוצות',
-  },
-  faqQuestion1: {
-    EN: 'How do I download the packs?',
-    RU: 'Как скачать пакеты?',
-    HE: 'איך אני מוריד את החבילות?',
-  },
-  faqAnswer1: {
-    EN: 'Simply click the download button and follow the instructions. All our packs are hosted on Google Drive for easy access.',
-    RU: 'Просто нажмите кнопку скачать и следуйте инструкциям. Все наши пакеты размещены на Google Drive для удобного доступа.',
-    HE: 'פשוט לחץ על כפתור ההורדה ועקוב אחר ההוראות. כל החבילות שלנו מאוחסנות ב-Google Drive לגישה נוחה.',
-  },
-  faqQuestion2: {
-    EN: 'Can I use these in commercial projects?',
-    RU: 'Можно ли использовать это в коммерческих проектах?',
-    HE: 'האם אני יכול להשתמש בזה בפרויקטים מסחריים?',
-  },
-  faqAnswer2: {
-    EN: 'Yes, all our packs are free for both personal and commercial use. No attribution required.',
-    RU: 'Да, все наши пакеты бесплатны как для личного, так и для коммерческого использования. Указание авторства не требуется.',
-    HE: 'כן, כל החבילות שלנו חינמיות לשימוש אישי ומסחרי כאחד. לא נדרש קרדיט.',
-  },
-  technicalSupportTitle: {
-    EN: 'Technical Support',
-    RU: 'Техническая Поддержка',
-    HE: 'תמיכה טכנית',
-  },
-  technicalSupportText: {
-    EN: 'Having issues with downloads or need help with the packs? Contact our support team through the contact section below.',
-    RU: 'Возникли проблемы со скачиванием или нужна помощь с пакетами? Свяжитесь с нашей службой поддержки через раздел контактов ниже.',
-    HE: 'נתקלת בבעיות בהורדה או זקוק לעזרה עם החבילות? צור קשר עם צוות התמיכה שלנו דרך מדור יצירת הקשר למטה.',
-  },
-  watchTutorial: {
-    EN: 'Watch Tutorial',
-    RU: 'Смотреть Туториал',
-    HE: 'צפה במדריך',
+  whatWeDo: {
+    EN: 'What I do',
+    RU: 'Что я делаю',
+    HE: 'מה אני עושה',
   },
   serviceVideoShort: {
     EN: 'Video production and filming ads',
@@ -178,45 +110,10 @@ export const translations: Translations = {
     RU: 'LinkedIn',
     HE: 'LinkedIn',
   },
-  heroTagline: {
-    EN: 'Creative Video Production Israel',
-    RU: 'Креативное видеопроизводство Израиль',
-    HE: 'הפקת וידאו קריאטיבית ישראל',
-  },
-  whatWeDo: {
-    EN: 'What we do',
-    RU: 'Что мы делаем',
-    HE: 'מה אנחנו עושים',
-  },
-  serviceVideo: {
-    EN: 'Video production and filming ads',
-    RU: 'Видеопроизводство и съемка рекламы',
-    HE: 'הפקת וידאו וצילום פרסומות',
-  },
   serviceVideoDesc: {
-    EN: 'We create high-quality video content for commercials, films, and series. Our team brings your vision to life with professional cinematography and post-production.',
-    RU: 'Мы создаем высококачественный видеоконтент для коммерческих проектов, фильмов и сериалов. Наша команда воплощает вашу идею в жизнь с помощью профессиональной съемки и постпродакшена.',
-    HE: 'אנחנו יוצרים תוכן וידאו באיכות גבוהה לפרסומות, סרטים וסדרות. הצוות שלנו מממשק את החזון שלך לחיים עם קולנוע מקצועי וpost-production.',
-  },
-  service3D: {
-    EN: '3D Animation & Visual Effects',
-    RU: '3D Анимация и визуальные эффекты',
-    HE: 'אנימציה 3D והשפעות ויזואליות',
-  },
-  service3DDesc: {
-    EN: 'Bring your ideas to life with stunning 3D animations and visual effects. From product visualization to complex motion graphics.',
-    RU: 'Воплотите свои идеи в жизнь с помощью потрясающей 3D-анимации и визуальных эффектов. От визуализации продуктов до сложной анимации движения.',
-    HE: 'הביאו את הרעיונות שלכם לחיים עם אנימציות 3D מדהימות והשפעות ויזואליות. מהדמיון של מוצר לגרפיקה תנועה מורכבת.',
-  },
-  serviceBranding: {
-    EN: 'Branding & Creative Direction',
-    RU: 'Брендинг и творческое направление',
-    HE: 'מיתוג וכיוון יצירתי',
-  },
-  serviceBrandingDesc: {
-    EN: 'We develop comprehensive branding strategies and provide creative direction to make your brand stand out in a competitive market.',
-    RU: 'Мы разрабатываем комплексные стратегии брендинга и обеспечиваем творческое направление, чтобы ваш бренд выделялся на рынке.',
-    HE: 'אנחנו מפתחים אסטרטגיות ברנדינג מקיפות וספקנו כיוון יצירתי כדי שהמותג שלך יתבלט בשוק התחרותי.',
+    EN: 'I create high-quality video for commercials, films and series. I bring your vision to life with cinematic filming and post-production, from the first idea to the final cut.',
+    RU: 'Я создаю высококачественное видео для рекламы, фильмов и сериалов. Я воплощаю вашу идею в жизнь с помощью кинематографической съемки и постпродакшена, от первой идеи до финального монтажа.',
+    HE: 'אני יוצר תוכן וידאו באיכות גבוהה לפרסומות, סרטים וסדרות. אני מממש את החזון שלך עם צילום קולנועי ופוסט-פרודקשן, מהרעיון הראשון ועד הגרסה הסופית.',
   },
   serviceEvents: {
     EN: 'Event Production & Coverage',
@@ -224,9 +121,9 @@ export const translations: Translations = {
     HE: 'ייצור ועיצוב אירועים',
   },
   serviceEventsDesc: {
-    EN: 'From concept to execution, we handle all aspects of event production including live streaming, photography, and highlight reels.',
-    RU: 'От концепции до реализации мы обрабатываем все аспекты производства событий, включая трансляцию в прямом эфире, фотографию и видео-ролики.',
-    HE: 'מהקונספט עד ההוצאה לפועל, אנחנו מטפלים בכל היבטי ייצור האירוע כולל שידור חי, צילום וסרטוני הייליט.',
+    EN: 'From concept to execution, I handle every part of event production, including live streaming, photography and highlight reels.',
+    RU: 'От концепции до реализации я веду все части производства мероприятий, включая трансляцию в прямом эфире, фотографию и хайлайт-ролики.',
+    HE: 'מהקונספט ועד הביצוע, אני מטפל בכל היבטי הפקת האירוע, כולל שידור חי, צילום וסרטוני הייליט.',
   },
   getPresentation: {
     EN: 'Get Presentation',
