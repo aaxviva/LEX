@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Menu as MenuIcon, MessageCircle, ArrowDownLeft, ArrowUp, Play } from 'lucide-react';
+import { Menu as MenuIcon, ArrowDownLeft, ArrowUp, Play } from 'lucide-react';
 import { Menu, Transition } from '@headlessui/react';
 import { translations } from './translations';
 import ReelsCarousel from './components/ReelsCarousel';
@@ -61,19 +61,11 @@ function App() {
     { title: t('serviceEvents'), description: t('serviceEventsDesc') },
   ];
 
+  const containerClass = 'mx-auto w-full max-w-[1200px] px-6 md:px-10';
+  const titleClass = 'font-benzin text-[32px] md:text-[48px] leading-[1.2] text-ink mb-10 md:mb-12 text-start';
+
   return (
     <div className="min-h-screen bg-white text-ink font-heebo" dir={isRtl ? 'rtl' : 'ltr'}>
-      {/* Floating WhatsApp Icon */}
-      <a
-        href="https://wa.me/+972542489940"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="fixed left-4 bottom-4 z-30 bg-green-500 hover:bg-green-600 text-white p-3 rounded-full shadow-lg transition-all duration-300 hover:scale-110"
-        aria-label="Contact via WhatsApp"
-      >
-        <MessageCircle className="w-6 h-6" />
-      </a>
-
       {/* Navigation */}
       <nav className={`fixed top-0 ${isRtl ? 'left-0' : 'right-0'} z-20 p-4 md:p-6 flex items-center gap-2 md:gap-4 ${navTone.text}`}>
         {/* Language Switcher */}
@@ -179,9 +171,9 @@ function App() {
       </section>
 
       {/* What I Do Section */}
-      <section className="bg-white flex items-center justify-center px-4 sm:px-6 md:px-12 py-6 md:py-10">
-        <div className="max-w-7xl w-full">
-          <h2 className="font-benzin text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-[1.2] text-ink mb-12 sm:mb-14 md:mb-16 text-center">
+      <section className="bg-white py-6 md:py-10">
+        <div className={containerClass}>
+          <h2 className={titleClass}>
             {t('whatWeDo')}
           </h2>
 
@@ -213,9 +205,9 @@ function App() {
       </section>
 
       {/* Portfolio Section */}
-      <section id="portfolio" className="bg-white flex items-center justify-center px-4 sm:px-6 md:px-8 py-6 md:py-10">
-        <div className="max-w-4xl w-full">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-benzin text-ink mb-8 md:mb-12">{t('portfolio')}</h2>
+      <section id="portfolio" className="bg-white py-6 md:py-10">
+        <div className={containerClass}>
+          <h2 className={titleClass}>{t('portfolio')}</h2>
           <div className="grid grid-cols-1 gap-6 sm:gap-8 md:grid-cols-2 md:gap-12">
             {portfolioItems.map((item) => (
               <div key={item.href} className="space-y-4">
@@ -253,11 +245,11 @@ function App() {
         </div>
       </section>
 
-      <ReelsCarousel />
+      <ReelsCarousel isRtl={isRtl} />
 
-      <section id="about" className="bg-surface flex items-center justify-center px-6 md:px-8 py-6 md:py-10">
-        <div className="max-w-5xl w-full">
-          <h2 className="text-4xl md:text-5xl font-benzin text-ink mb-8 md:mb-12">{t('aboutMe')}</h2>
+      <section id="about" className="bg-surface py-6 md:py-10">
+        <div className={containerClass}>
+          <h2 className={titleClass}>{t('aboutMe')}</h2>
           <div className={`grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center ${isRtl ? 'md:grid-flow-col-reverse' : ''}`}>
             <div className="space-y-4 md:space-y-6 text-base md:text-lg font-heebo text-muted">
               <p className="text-xl md:text-2xl font-medium text-ink mb-6 md:mb-8">{t('aboutTitle')}</p>
@@ -330,9 +322,9 @@ function App() {
         </div>
       </section>
 
-      <section id="contact" className="bg-surface flex items-center justify-center px-4 sm:px-6 md:px-8 py-6 md:py-10">
-        <div className="max-w-4xl w-full">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-benzin text-ink mb-8 sm:mb-10 md:mb-12">{t('contact')}</h2>
+      <section id="contact" className="bg-surface py-6 md:py-10">
+        <div className={containerClass}>
+          <h2 className={titleClass}>{t('contact')}</h2>
           <div className="flex flex-col gap-4 sm:gap-5 md:gap-6">
             <a
               href="https://wa.me/+972542489940"

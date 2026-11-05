@@ -20,7 +20,7 @@ const reels: ReelSlide[] = [
   { id: 5, video: 'https://videos.derectorai.space/art.mp4', label: 'COMMUNITY' },
 ];
 
-export default function ReelsCarousel() {
+export default function ReelsCarousel({ isRtl = false }: { isRtl?: boolean }) {
   const swiperRef = useRef<SwiperCore | null>(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const [selectedVideo, setSelectedVideo] = useState<string | null>(null);
@@ -51,8 +51,8 @@ export default function ReelsCarousel() {
   return (
     <>
       <section dir="ltr" className="bg-surface py-6 md:py-10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
-          <h2 className="text-4xl md:text-5xl font-benzin text-ink mb-12 md:mb-16">REELS</h2>
+        <div className="mx-auto w-full max-w-[1200px] px-6 md:px-10">
+          <h2 className={`font-benzin text-[32px] md:text-[48px] leading-[1.2] text-ink mb-10 md:mb-12 ${isRtl ? 'text-end' : 'text-start'}`}>REELS</h2>
 
           <div className="space-y-8 md:space-y-12">
             <div className="relative">

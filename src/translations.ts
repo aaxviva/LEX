@@ -97,8 +97,8 @@ export const translations: Translations = {
     HE: 'לכתוב בוואטסאפ',
   },
   whatWeDo: {
-    EN: 'What I do',
-    RU: 'Что я делаю',
+    EN: 'WHAT I DO',
+    RU: 'ЧТО Я ДЕЛАЮ',
     HE: 'מה אני עושה',
   },
   serviceVideoShort: {
