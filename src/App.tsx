@@ -3,6 +3,7 @@ import { Menu as MenuIcon, ArrowDownLeft, ArrowUp, Play } from 'lucide-react';
 import { Menu, Transition } from '@headlessui/react';
 import { translations } from './translations';
 import ReelsCarousel from './components/ReelsCarousel';
+import { openWhatsApp } from './utils/whatsapp';
 
 type Language = 'EN' | 'RU' | 'HE';
 
@@ -159,14 +160,13 @@ function App() {
           <p className="mt-2 text-sm md:text-base tracking-wide text-white/70">
             {t('heroDetails')}
           </p>
-          <a
-            href="https://wa.me/972542489940"
-            target="_blank"
-            rel="noopener noreferrer"
+          <button
+            type="button"
+            onClick={() => openWhatsApp(currentLang)}
             className="mt-5 inline-flex items-center justify-center bg-black text-white px-7 py-3 md:px-8 md:py-3.5 text-sm md:text-base font-medium rounded-full ring-1 ring-white/30 hover:bg-neutral-800 transition-colors duration-300"
           >
             {t('heroCta')}
-          </a>
+          </button>
         </div>
       </section>
 
@@ -326,14 +326,13 @@ function App() {
         <div className={containerClass}>
           <h2 className={titleClass}>{t('contact')}</h2>
           <div className="flex flex-col gap-4 sm:gap-5 md:gap-6">
-            <a
-              href="https://wa.me/+972542489940"
-              target="_blank"
-              rel="noopener noreferrer"
+            <button
+              type="button"
+              onClick={() => openWhatsApp(currentLang)}
               className="text-ink text-sm sm:text-base md:text-lg underline-offset-4 hover:underline transition-colors w-fit"
             >
               WhatsApp
-            </a>
+            </button>
             <a
               href="https://www.instagram.com/lexviven?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
               target="_blank"

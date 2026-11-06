@@ -1,3 +1,5 @@
+export type Language = 'EN' | 'RU' | 'HE';
+
 type TranslationKey =
   | 'aboutMe'
   | 'portfolio'
@@ -79,7 +81,7 @@ export const translations: Translations = {
   heroName: {
     EN: 'Alexey Viventsov',
     RU: 'Алексей Вивенцов',
-    HE: 'אלכסיי ויוונצוב',
+    HE: 'אלכסיי ויבנצוב',
   },
   heroSubtitle: {
     EN: 'Video for car dealerships, brands and events in Israel',
