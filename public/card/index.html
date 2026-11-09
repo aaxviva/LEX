@@ -1,16 +1,27 @@
 <!doctype html>
-<html lang="ru">
+<html lang="he" dir="rtl">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Alexey Viventsov — Filmmaker</title>
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
+      @font-face {
+        font-family: 'Benzin-Bold';
+        src: url('https://db.onlinewebfonts.com/t/e8326221fd905c4b9c42f6f4ed5c9ca5.woff2') format('woff2'),
+             url('https://db.onlinewebfonts.com/t/e8326221fd905c4b9c42f6f4ed5c9ca5.woff') format('woff'),
+             url('https://db.onlinewebfonts.com/t/e8326221fd905c4b9c42f6f4ed5c9ca5.ttf') format('truetype');
+        font-weight: bold;
+        font-style: normal;
+        font-display: swap;
+      }
       * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
       body {
-        font-family: 'Heebo', system-ui, -apple-system, sans-serif;
-        background: #0a0a0a;
-        color: #fff;
+        font-family: 'Heebo', sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        background: #ffffff;
+        color: #111111;
         min-height: 100vh;
         min-height: 100dvh;
         display: flex;
@@ -19,42 +30,22 @@
         justify-content: center;
         padding: 32px 20px;
       }
-      .card {
-        width: 100%;
-        max-width: 380px;
-        text-align: center;
-      }
-      .avatar {
-        width: 88px;
-        height: 88px;
-        border-radius: 50%;
-        margin: 0 auto 24px;
-        background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
-        border: 2px solid rgba(255,255,255,0.1);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        overflow: hidden;
-      }
-      .avatar span {
-        font-size: 34px;
-        font-weight: 600;
-        letter-spacing: 1px;
-        color: rgba(255,255,255,0.85);
-      }
-      h1 {
-        font-size: 26px;
-        font-weight: 600;
-        letter-spacing: -0.3px;
-        margin-bottom: 4px;
+      .card { width: 100%; max-width: 380px; text-align: center; }
+      .name {
+        font-family: 'Benzin-Bold', 'Arial Black', -apple-system, sans-serif;
+        font-size: 30px;
+        line-height: 1.1;
+        letter-spacing: -0.025em;
+        color: #111111;
+        margin-bottom: 6px;
       }
       .role {
         font-size: 15px;
         font-weight: 400;
-        color: rgba(255,255,255,0.55);
+        color: #555555;
         letter-spacing: 2px;
         text-transform: uppercase;
-        margin-bottom: 40px;
+        margin-bottom: 44px;
       }
       .btns { display: flex; flex-direction: column; gap: 14px; }
       .btn {
@@ -64,43 +55,38 @@
         gap: 10px;
         width: 100%;
         padding: 18px 20px;
-        border-radius: 16px;
+        border-radius: 999px;
+        border: 1px solid #111111;
+        background: #ffffff;
+        font-family: 'Heebo', sans-serif;
         font-size: 17px;
         font-weight: 500;
+        color: #111111;
         text-decoration: none;
-        color: #fff;
-        transition: transform 0.15s ease, background 0.2s ease, opacity 0.2s ease;
+        transition: transform 0.15s ease, background 0.2s ease;
       }
       .btn:active { transform: scale(0.97); }
-      .btn svg { width: 22px; height: 22px; flex-shrink: 0; }
-      .btn-youtube { background: #cc0000; }
-      .btn-youtube:hover { background: #b30000; }
-      .btn-whatsapp { background: #25D366; color: #073b16; }
-      .btn-whatsapp:hover { background: #20bd5a; }
-      .btn-site {
-        background: rgba(255,255,255,0.08);
-        border: 1px solid rgba(255,255,255,0.14);
-      }
-      .btn-site:hover { background: rgba(255,255,255,0.14); }
+      .btn:hover { background: #F5F5F5; }
+      .btn svg { width: 22px; height: 22px; flex-shrink: 0; fill: #111111; }
+      .btn-site svg { fill: none; stroke: #111111; }
     </style>
   </head>
   <body>
     <div class="card">
-      <div class="avatar"><span>AV</span></div>
-      <h1>Alexey Viventsov</h1>
-      <p class="role">Filmmaker</p>
+      <h1 class="name">Alexey Viventsov</h1>
+      <p class="role">FILMMAKER</p>
       <div class="btns">
-        <a class="btn btn-youtube" href="https://youtu.be/u-NwCYGTUn4?si=N5BcbwRtOgkkGBGd" target="_blank" rel="noopener noreferrer">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4l6.2 3.6-6.2 3.6z"/></svg>
-          Посмотреть работы
+        <a class="btn" href="https://youtu.be/u-NwCYGTUn4?si=N5BcbwRtOgkkGBGd" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4l6.2 3.6-6.2 3.6z"/></svg>
+          צפייה בסרטון
         </a>
-        <a class="btn btn-whatsapp" href="https://wa.me/972542489940" target="_blank" rel="noopener noreferrer">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M.1 24l1.7-6.2a12 12 0 1 1 4.4 4.4L0 24zm6.6-3.8l.4.2a9.9 9.9 0 1 0-3.4-3.4l.2.4-1 3.7 3.8-1zm11-5.3c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.6.1-.2.3-.6.8-.8 1-.1.2-.3.2-.5.1-.8-.4-1.6-.8-2.3-1.8-.2-.3.2-.3.5-1 .1-.2 0-.3 0-.5l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3c-.3.3-.9.9-.9 2.1s.9 2.4 1 2.6c.1.2 1.8 2.8 4.3 3.9 1.6.7 2.2.7 3 .6.5 0 1.4-.6 1.6-1.1.2-.6.2-1 .1-1.1z"/></svg>
-          Написать в WhatsApp
+        <a class="btn" href="https://wa.me/972542489940" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24"><path d="M.1 24l1.7-6.2a12 12 0 1 1 4.4 4.4L0 24zm6.6-3.8l.4.2a9.9 9.9 0 1 0-3.4-3.4l.2.4-1 3.7 3.8-1zm11-5.3c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.6.1-.2.3-.6.8-.8 1-.1.2-.3.2-.5.1-.8-.4-1.6-.8-2.3-1.8-.2-.3.2-.3.5-1 .1-.2 0-.3 0-.5l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3c-.3.3-.9.9-.9 2.1s.9 2.4 1 2.6c.1.2 1.8 2.8 4.3 3.9 1.6.7 2.2.7 3 .6.5 0 1.4-.6 1.6-1.1.2-.6.2-1 .1-1.1z"/></svg>
+          שליחת הודעה בוואטסאפ
         </a>
         <a class="btn btn-site" href="https://lexviven.com">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-          Сайт
+          <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          לאתר
         </a>
       </div>
     </div>
