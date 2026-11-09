@@ -16,6 +16,15 @@
         font-style: normal;
         font-display: swap;
       }
+      @font-face {
+        font-family: 'CyGroteskGrand';
+        src: url('/fonts/cy-grotesk-grand-dark.woff2') format('woff2'),
+             url('/fonts/cy-grotesk-grand-dark.woff') format('woff'),
+             url('/fonts/cy-grotesk-grand-dark.ttf') format('truetype');
+        font-weight: bold;
+        font-style: normal;
+        font-display: swap;
+      }
       * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
       body {
         font-family: 'Heebo', sans-serif;
@@ -31,23 +40,25 @@
         justify-content: center;
         padding: 32px 20px;
       }
-      .card { width: 100%; max-width: 380px; text-align: center; }
+      .card { width: 100%; max-width: 380px; }
+      .name-block { display: inline-block; text-align: left; }
+      .name-block-wrapper { text-align: center; margin-bottom: 44px; }
       .name {
         font-family: 'Benzin-Bold', 'Arial Black', -apple-system, sans-serif;
         font-size: 30px;
         line-height: 1.1;
         letter-spacing: -0.025em;
         color: #111111;
-        margin-bottom: 6px;
       }
       .role {
-        font-family: 'Benzin-Bold', 'Arial Black', -apple-system, sans-serif;
-        font-size: 13px;
+        font-family: 'CyGroteskGrand', 'Arial Black', -apple-system, sans-serif;
+        font-size: 7.5px;
         font-weight: bold;
-        color: #555555;
-        letter-spacing: 2px;
+        color: #111111;
+        letter-spacing: 0;
         text-transform: uppercase;
-        margin-bottom: 44px;
+        text-align: left;
+        margin-top: 1px;
       }
       .btns { display: flex; flex-direction: column; gap: 14px; }
       .btn {
@@ -74,8 +85,12 @@
   </head>
   <body>
     <div class="card">
-      <h1 class="name">Alexey Viventsov</h1>
-      <p class="role">FILMMAKER</p>
+      <div class="name-block-wrapper">
+        <div class="name-block">
+          <h1 class="name">Alexey Viventsov</h1>
+          <p class="role">FILMMAKER</p>
+        </div>
+      </div>
       <div class="btns">
         <a class="btn" href="https://youtu.be/u-NwCYGTUn4?si=N5BcbwRtOgkkGBGd" target="_blank" rel="noopener noreferrer">
           <i class="fa-brands fa-youtube"></i>
