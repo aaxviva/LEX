@@ -1,8 +1,8 @@
 @font-face {
   font-family: 'Strelka';
-  src: url('https://db.onlinewebfonts.com/t/2e5aa8907c9665c36a0c8f4c219ac7b6.woff2') format('woff2'),
-       url('https://db.onlinewebfonts.com/t/2e5aa8907c9665c36a0c8f4c219ac7b6.woff') format('woff'),
-       url('https://db.onlinewebfonts.com/t/2e5aa8907c9665c36a0c8f4c219ac7b6.ttf') format('truetype');
+  src: url('/fonts/strelka.woff2') format('woff2'),
+       url('/fonts/strelka.woff') format('woff'),
+       url('/fonts/strelka.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -10,9 +10,9 @@
 
 @font-face {
   font-family: 'Benzin-Bold';
-  src: url('https://db.onlinewebfonts.com/t/e8326221fd905c4b9c42f6f4ed5c9ca5.woff2') format('woff2'),
-       url('https://db.onlinewebfonts.com/t/e8326221fd905c4b9c42f6f4ed5c9ca5.woff') format('woff'),
-       url('https://db.onlinewebfonts.com/t/e8326221fd905c4b9c42f6f4ed5c9ca5.ttf') format('truetype');
+  src: url('/fonts/benzin.woff2') format('woff2'),
+       url('/fonts/benzin.woff') format('woff'),
+       url('/fonts/benzin.ttf') format('truetype');
   font-weight: bold;
   font-style: normal;
   font-display: swap;
